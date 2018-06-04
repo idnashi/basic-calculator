@@ -49,13 +49,12 @@ namespace Basic_Calculator
             Button button = (Button) sender;
 
             if (result != 0)
-            {
                 button_equal.PerformClick();
-            }
+            else
+                result = Double.Parse(textBox_result.Text);
 
             isOperation = true;
             operation = button.Text;
-            result = Double.Parse(textBox_result.Text);
             history.Text = result + " " + operation;
         }
 
@@ -86,7 +85,12 @@ namespace Basic_Calculator
                 case "/":
                     textBox_result.Text = (result / Double.Parse(textBox_result.Text)).ToString();
                     break;
+                default:
+                    break;
             }
+
+            result = Double.Parse(textBox_result.Text);
+            history.Text = "";
         }
     }
 }
